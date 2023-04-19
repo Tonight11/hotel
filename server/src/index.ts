@@ -1,10 +1,10 @@
-import express from 'express';
+import express, {Application} from 'express';
 
 require('dotenv').config();
 const SERVER_PORT = process.env.SERVER_PORT;
 
 
-const app = express();
+const app: Application = express();
 
 const start = async () =>{
     try {
