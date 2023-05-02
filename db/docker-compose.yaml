@@ -1,0 +1,12 @@
+version: '3.5'
+
+services:
+  db_bayadan:
+    container_name: db_bayadan
+    ports:
+      - "5438:5432"
+    environment:
+      - POSTGRES_DB=db_bayadan
+      - POSTGRES_PASSWORD=q%tm1)n*X6%2I4s
+      - POSTGRES_USER=postgres
+    image: postgres:15.2-alpine
