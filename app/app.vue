@@ -3,7 +3,7 @@
 		link: [
 			{
 				rel: 'stylesheet',
-				href: 'https://fonts.googleapis.com/css2?family=Charis+SIL:wght@400;700&display=swap',
+				href: 'https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap',
 			},
 			{
 				rel: 'preconnect',
@@ -24,8 +24,8 @@
 				color="repeating-linear-gradient(to right,rgb(144, 170, 255) 0%,rgb(72, 115, 255) 100%)"
 			/>
 			<NuxtLayout>
-				<NuxtLink to="/">home</NuxtLink>
-				<NuxtLink to="/hotel">hotel</NuxtLink>
+				<NuxtLink to="/">Home</NuxtLink>
+				<NuxtLink to="/hotel">Hotel</NuxtLink>
 				<NuxtPage />
 			</NuxtLayout>
 		</div>
