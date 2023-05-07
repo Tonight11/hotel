@@ -6,13 +6,13 @@ html {
 	scroll-behavior: smooth;
 
 	@media (min-width: 768px) {
-		font-size: calc(10vw / 8);
-	}
-	@media (min-width: 1000px) {
 		font-size: calc(10vw / 10);
 	}
-	@media (min-width: 1180px) {
-		font-size: calc(10vw / 12.8);
+	@media (min-width: 960px) {
+		font-size: calc(10vw / 12);
+	}
+	@media (min-width: 1080px) {
+		font-size: calc(10vw / 13.7);
 	}
 }
 
@@ -24,6 +24,7 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 	overflow-x: hidden;
 	font-size: 1.4rem;
+	color: $default-color;
 
 	&.lock {
 		overflow-y: hidden;
