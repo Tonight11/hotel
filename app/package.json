@@ -9,6 +9,7 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@nuxt/image-edge": "1.0.0-28050764.aaee7ac",
     "nuxt": "^3.4.1",
     "nuxt-quasar-ui": "^1.6.1",
     "sass": "^1.62.0"
