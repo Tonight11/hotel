@@ -18,6 +18,7 @@
     <div class="wrapper"> 
         <div class="slot">
           <div class="slot__header" :class="scrollPosition >= 91 ? 'fixed' : ''">
+				<div class="container">
             <QToolbar class="text-white">
               <QToolbarTitle class="slot__header-title">
                 BAYaDAN
@@ -28,9 +29,11 @@
               </div>
             </QToolbar>
           </div>
+			</div>
             <slot />
         </div>
         <div class="footer">
+			<div class="container">
             <div class="footer__logo">BAYaDAN</div>
             <div class="footer__info">
                 <div class="footer__info-item"> <span class="footer__info-item-heading">Меню:</span> <p>О компании</p> <p>О компании</p> <p>О компании</p> <p>О компании</p> <p>О компании</p></div>
@@ -49,8 +52,13 @@
             </div>
         </div>
     </div>
+		</div>
 </template>
 
 <style lang="scss">
     @import '@/assets/styles/defLayout.scss';
+
+	.q-toolbar {
+		padding: 0;
+	}
 </style>
