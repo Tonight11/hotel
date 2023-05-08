@@ -26,6 +26,7 @@
 			<NuxtLayout>
 				<NuxtLink to="/">Home</NuxtLink>
 				<NuxtLink to="/hotel">Hotel</NuxtLink>
+				<NuxtLink to="/hotel/123">SHotel</NuxtLink>
 				<NuxtPage />
 			</NuxtLayout>
 		</div>
