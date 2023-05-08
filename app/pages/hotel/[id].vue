@@ -12,9 +12,7 @@
 				<single-hotel-info />
 				<single-hotel-about />
 				<single-hotel-place />
-				<div class="single-hotel__book">
-					<title-section>Бронировать</title-section>
-				</div>
+				<single-hotel-book />
 			</div>
 		</div>
 	</div>
