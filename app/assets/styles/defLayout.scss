@@ -1,0 +1,92 @@
+@import '../styles/vars.scss';
+@import url('https://fonts.googleapis.com/css2?family=Oldenburg&display=swap');
+.wrapper {
+    display: flex;
+	flex-direction: column;
+	min-height: 100vh;
+    min-width: 100vw;
+    justify-content: space-between;
+}
+.slot {
+    height: fit-content;
+    &__header {
+    font-family: 'Oldenburg', cursive;
+    background-color: #27272e00;
+    height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    transition: .5s, width .0s;
+        &-title {
+            font-size: 29px;
+        }
+    }
+    &__header-media {
+        display: flex;
+        gap: 1.2rem;
+        padding-right: 3rem;
+    }
+}
+.margin {
+    padding: 0px 5rem 0rem 5rem;
+}
+.fixed {
+    position: fixed;
+    background-color: #27272e;
+    z-index: 2;
+    width: 100%;
+    padding: 0px 5rem 0px 5rem;
+}
+.footer {
+    max-height: 30rem;
+    height: 100%;
+    background-image: url('/assets/imgs/Footer.svg');
+    min-width: 100%;
+    background-repeat: no-repeat;
+    background-size:cover;
+    background-position: center center;
+    align-self: flex-end;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Oldenburg', cursive;
+    gap: 2rem;
+
+    &__logo {
+        margin-top: 2rem;
+        font-size: 2rem;
+        height: 30%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__info{
+        font-size: 1.2rem;
+        width: 100%;
+        height: 50%;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        &-item p{
+            padding-left: .5rem;
+        }
+        &-item-heading {
+            color: #CA8647;
+        }
+    }
+
+    &__rights {
+        width: 100%;
+        height: 20%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 10%;
+    }
+}
+
