@@ -7,10 +7,12 @@ specifiers:
   nuxt-quasar-ui: ^1.6.1
   quasar: ^2.11.10
   sass: ^1.62.0
+  vue-yandex-maps: ^1.1.0
 
 dependencies:
   '@quasar/extras': 1.16.3
   quasar: 2.12.0
+  vue-yandex-maps: 1.1.0
 
 devDependencies:
   '@nuxt/image-edge': 1.0.0-28050764.aaee7ac
@@ -4885,6 +4887,10 @@ packages:
       '@vue/devtools-api': 6.5.0
       vue: 3.2.47
     dev: true
+
+  /vue-yandex-maps/1.1.0:
+    resolution: {integrity: sha512-pYgjEl8BRCkwK2BPF23/OwHD9Yk58wp2t0WSAHa+hKbb1JyMpbDTgVFXD4+7BkzGk6YpQT6zu1BV4aXOcyoJhQ==}
+    dev: false
 
   /vue/3.2.47:
     resolution: {integrity: sha512-60188y/9Dc9WVrAZeUVSDxRQOZ+z+y5nO2ts9jWXSTkMvayiWxCWOWtBQoYjLeccfXkiiPZWAHcV+WTPhkqJHQ==}
