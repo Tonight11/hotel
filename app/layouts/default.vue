@@ -3,7 +3,6 @@
 
   let updateScrollPos = () => {
     scrollPosition.value = Math.ceil(window.scrollY);
-    console.log(scrollPosition)
   };
 
   onMounted (() => {
