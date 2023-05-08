@@ -8,37 +8,10 @@
 		</div>
 		<div class="container">
 			<div class="single-hotel__inner">
-				<div class="single-hotel__adress">
-					<div class="single-hotel__adress-text">Расположение</div>
-					<div class="single-hotel__adress-name">
-						г. Москва, ул. Л.Толстого 100
-					</div>
-				</div>
-				<div class="single-hotel__info">
-					<q-card class="single-hotel__card" v-for="item in 3">
-						<q-card-section>
-							<div class="text-h4">Этажность</div>
-						</q-card-section>
-
-						<q-separator dark inset />
-
-						<q-card-section>
-							<div class="text-h2">1</div>
-						</q-card-section>
-					</q-card>
-				</div>
-				<div class="single-hotel__about">
-					<nuxt-img sizes="sm:100vw lg:70vw" height="465" src="/hello.jpeg" />
-					<div class="single-hotel__text">
-						Жилой комплекс "Sky Dive" расположен в центре Дубая. Это лучшее
-						место для тех, кто ищет баланс между работой и отдыхом. Уникальный
-						архитектурный стиль жилого комплекса "Sky Dive" придаст новую
-						достопримечательность нашему городу.
-					</div>
-				</div>
-				<div class="single-hotel__place">
-					<title-section>Расположение</title-section>
-				</div>
+				<single-hotel-adress />
+				<single-hotel-info />
+				<single-hotel-about />
+				<single-hotel-place />
 				<div class="single-hotel__book">
 					<title-section>Бронировать</title-section>
 				</div>
@@ -47,7 +20,7 @@
 	</div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 	.single-hotel {
 		&__inner {
 		}
@@ -76,12 +49,14 @@
 		}
 
 		&__info {
-			background-color: $light-yellow-color;
-			width: 90rem;
 			display: flex;
 			gap: 2.5rem;
 			justify-content: center;
 			margin-bottom: 12rem;
+
+			@media screen and (max-width: 700px) {
+				flex-direction: column;
+			}
 		}
 
 		&__card {
@@ -95,6 +70,14 @@
 			display: flex;
 			gap: 6rem;
 			margin-bottom: 7.3rem;
+
+			@media screen and (max-width: 1180px) {
+				flex-direction: column;
+			}
+
+			& img {
+				max-height: 465px;
+			}
 		}
 
 		&__about-img {

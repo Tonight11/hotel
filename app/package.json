@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.16.2",
-    "quasar": "^2.11.10"
+    "quasar": "^2.11.10",
+    "vue-yandex-maps": "^1.1.0"
   }
 }
