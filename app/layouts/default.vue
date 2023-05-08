@@ -1,6 +1,34 @@
+<script setup lang="ts">
+  let scrollPosition = ref(0);
+
+  let updateScrollPos = () => {
+    scrollPosition.value = Math.ceil(window.scrollY);
+    console.log(scrollPosition)
+  };
+
+  onMounted (() => {
+    window.addEventListener('scroll', updateScrollPos)
+    updateScrollPos()
+  })
+  onBeforeUnmount(() => {
+    window.removeEventListener('scroll', updateScrollPos)
+  }) 
+</script>
+
 <template>
-    <div class="wrapper">
+    <div class="wrapper"> 
         <div class="slot">
+          <div class="slot__header" :class="scrollPosition >= 91 ? 'fixed' : ''">
+            <QToolbar class="text-white">
+              <QToolbarTitle class="slot__header-title">
+                BAYaDAN
+              </QToolbarTitle>
+              <div class="slot__header-media">
+                <img src="@/assets/imgs/social_media/instagram.svg" alt="">
+                <img src="@/assets/imgs/social_media/telegram.svg" alt="">
+              </div>
+            </QToolbar>
+          </div>
             <slot />
         </div>
         <div class="footer">
@@ -23,10 +51,6 @@
         </div>
     </div>
 </template>
-
-<script setup>
-
-</script>
 
 <style lang="scss">
     @import '@/assets/styles/defLayout.scss';
