@@ -1,6 +1,6 @@
 @import '../styles/vars.scss';
 @import url('https://fonts.googleapis.com/css2?family=Oldenburg&display=swap');
-.wrapper {
+.d {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -37,7 +37,7 @@
     max-height: 30rem;
     height: 100%;
     background-image: url('/assets/imgs/Footer.svg');
-    min-width: 100%;
+    width: 100%;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -49,6 +49,7 @@
     justify-content: center;
     font-family: 'Oldenburg', cursive;
     gap: 2rem;
+    align-self: flex-end;
 
     &__logo {
         margin-top: 2rem;
