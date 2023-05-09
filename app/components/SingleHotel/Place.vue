@@ -1,41 +1,45 @@
 <script setup lang="ts">
-	const coordinates = [55, 33];
-	const controls = ['fullscreenControl'];
-	const visible = ref(false);
-	setTimeout(() => {
-		visible.value = true;
-	}, 1000);
+const coordinates = [55, 33]
+const controls = ['fullscreenControl']
+const visible = ref(false)
+setTimeout(() => {
+    visible.value = true
+}, 1000)
 </script>
 
 <template>
-	<div class="single-hotel__place">
-		<title-section>Расположение</title-section>
-		<ClientOnly>
-			<YandexMap v-if="visible" :coordinates="coordinates" :controls="controls">
-				<YandexMarker
-					:coordinates="coordinates"
-					:marker-id="123"
-				></YandexMarker>
-			</YandexMap>
-			<div class="load" v-else>Loading map........</div>
-		</ClientOnly>
-	</div>
+    <div class="single-hotel__place">
+        <title-section>Расположение</title-section>
+        <ClientOnly>
+            <YandexMap
+                v-if="visible"
+                :coordinates="coordinates"
+                :controls="controls"
+            >
+                <YandexMarker
+                    :coordinates="coordinates"
+                    :marker-id="123"
+                ></YandexMarker>
+            </YandexMap>
+            <div v-else class="load">Loading map........</div>
+        </ClientOnly>
+    </div>
 </template>
 
 <style lang="scss">
-	.single-hotel__place {
-		display: flex;
-		flex-direction: column;
-		height: 70vh;
-	}
-	.yandex-container {
-		min-height: 500px;
-		flex: 1;
-	}
+.single-hotel__place {
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+}
+.yandex-container {
+    min-height: 500px;
+    flex: 1;
+}
 
-	.load {
-		min-height: 500px;
-		flex: 1;
-		background-color: $secondary-color;
-	}
+.load {
+    min-height: 500px;
+    flex: 1;
+    background-color: $secondary-color;
+}
 </style>
