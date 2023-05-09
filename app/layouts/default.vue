@@ -15,7 +15,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-    <div class="wrapper">
+    <div class="wrapper-default">
         <div class="slot">
             <div
                 class="slot__header"
