@@ -3,7 +3,12 @@
 <template>
     <div class="single-hotel">
         <div class="single-hotel__first">
-            <title></title>
+            <titles-page-title>
+                <template #lato>
+                    <p>title</p>
+                </template>
+                <template #cursive><p>title</p></template>
+            </titles-page-title>
             <nuxt-img class="single-hotel__img" src="/hello.jpeg" />
         </div>
         <div class="container">

@@ -22,7 +22,12 @@ const disabledDates = computed(() => {
 
 <template>
     <div class="single-hotel__book book-hotel">
-        <title-section>Бронировать</title-section>
+        <titles-section-title>
+            <template #lato>
+                <p>Бронировать</p>
+            </template>
+            <template #cursive><p>book</p></template>
+        </titles-section-title>
         <form action="#" class="book-hotel__form" @submit.prevent="">
             <div class="book-hotel__right">
                 <q-input
@@ -89,6 +94,7 @@ const disabledDates = computed(() => {
 }
 
 .book-hotel {
+    margin-top: 20rem;
     &__form {
         display: flex;
         gap: 10rem;
