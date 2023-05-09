@@ -3,9 +3,7 @@
 <template>
     <div>
         <div class="container">
-<div class="hello">11
-	
-</div>
-</div>
+            <div class="hello">11</div>
+        </div>
     </div>
 </template>
