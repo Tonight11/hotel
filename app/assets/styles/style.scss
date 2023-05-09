@@ -1,63 +1,63 @@
 @import '../styles/vars.scss';
 
 html {
-	font-size: 62.5%;
-	font-size: calc(10vw / 5);
-	scroll-behavior: smooth;
+    font-size: 62.5%;
+    font-size: calc(10vw / 5);
+    scroll-behavior: smooth;
 
-	@media (min-width: 468px) {
-		font-size: calc(10vw / 8);
-	}
+    @media (min-width: 468px) {
+        font-size: calc(10vw / 8);
+    }
 
-	@media (min-width: 768px) {
-		font-size: calc(10vw / 10);
-	}
-	@media (min-width: 960px) {
-		font-size: calc(10vw / 12);
-	}
-	@media (min-width: 1080px) {
-		font-size: calc(10vw / 13.7);
-	}
+    @media (min-width: 768px) {
+        font-size: calc(10vw / 10);
+    }
+    @media (min-width: 960px) {
+        font-size: calc(10vw / 12);
+    }
+    @media (min-width: 1080px) {
+        font-size: calc(10vw / 13.7);
+    }
 }
 
 body {
-	background-color: $mainBackgroundColor;
-	font-family: $mainFont;
-	font-weight: $mainFontWeight;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	overflow-x: hidden;
-	font-size: 1.4rem;
-	color: $default-color;
+    background-color: $mainBackgroundColor;
+    font-family: $mainFont;
+    font-weight: $mainFontWeight;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    font-size: 1.4rem;
+    color: $default-color;
 
-	&.lock {
-		overflow-y: hidden;
-	}
+    &.lock {
+        overflow-y: hidden;
+    }
 }
 button {
-	border: none;
+    border: none;
 }
 a {
-	text-decoration: none;
-	color: $mainFontColor;
+    text-decoration: none;
+    color: $mainFontColor;
 }
 p {
-	margin: 0;
+    margin: 0;
 }
 ul,
 li {
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 .container {
-	position: relative;
-	flex: 0 0 auto;
-	margin: 0 auto;
-	padding: 0 1.5rem;
-	width: 100%;
-	max-width: $lgDesktopWidth;
+    position: relative;
+    flex: 0 0 auto;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    width: 100%;
+    max-width: $lgDesktopWidth;
 }
 
 .wrapper {
@@ -71,7 +71,7 @@ li {
 }
 
 .wrapper-content {
-	display: flex;
-	flex: 1 0 auto;
-	margin-top: 10rem; // if header is fixed do mt: headerHeight
+    display: flex;
+    flex: 1 0 auto;
+    margin-top: 10rem; // if header is fixed do mt: headerHeight
 }
