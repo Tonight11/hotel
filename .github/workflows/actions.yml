@@ -7,25 +7,27 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
+  ci:
+    name: Lint on Node ${{ matrix.node-version }}
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        node-version: [14, 16, 18]
+
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - name: Use Node.js 17.x
-      uses: actions/setup-node@v3
-      with:
-        node-version: '17.x'
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - name: Install dependencies
-      run: npm run install
+      - name: Install dependencies
+        run: npm run install
 
-    - name: Lint and fix files
-      run: npm run lintfix
+      - name: Lint
+        run: npm run lint
 
-    - name: Lint files
-      run: npm run lint
-
-    - name: Build
-      run: npm run build
+      - name: Build
+        run: npm run build
