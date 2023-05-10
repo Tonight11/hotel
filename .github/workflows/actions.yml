@@ -11,21 +11,21 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
-    - name: Use Node.js 14.x
-      uses: actions/setup-node@v1
+    - name: Use Node.js 17.x
+      uses: actions/setup-node@v3
       with:
-        node-version: '14.x'
+        node-version: '17.x'
 
     - name: Install dependencies
-      run: npm install
+      run: pnpm install
+
+    - name: Lint and fix files
+      run: pnpm lintfix
+
+    - name: Lint files
+      run: pnpm lint
 
     - name: Build
-      run: npm run build
-
-    - name: Lint Fixes
-      run: npm run lintfix
-
-    - name: Lint Check
-      run: npm run lint
+      run: pnpm build
