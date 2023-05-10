@@ -1,13 +1,10 @@
-name: LayingPipe
+name: CI
 
-on: 
+on:
   push:
-    branches:
-      - main
-
+    branches: [ main ]
   pull_request:
-    branches:
-      -main
+    branches: [ main ]
 
 jobs:
   build:
@@ -15,22 +12,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
+
+    - name: Use Node.js 14.x
+      uses: actions/setup-node@v1
       with:
-        fetch-depth: 0
-    - uses: actions/setup-node@v2
-      with:
-          node-version: '14'
-    - name: pnpm install
-      run: |
-        pnpm install
+        node-version: '14.x'
 
-    - name: pnpm build
-      run: pnpm build
+    - name: Install dependencies
+      run: npm install
 
-    - name: pnpm lintfix
-      run: |
-        pnpm lintfix
+    - name: Build
+      run: npm run build
 
-    - name: pnpm lint
-      run: |
-        pnpm lint
+    - name: Lint Fixes
+      run: npm run lintfix
+
+    - name: Lint Check
+      run: npm run lint
