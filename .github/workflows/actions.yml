@@ -19,13 +19,13 @@ jobs:
         node-version: '17.x'
 
     - name: Install dependencies
-      run: pnpm install
+      run: npm install
 
     - name: Lint and fix files
-      run: pnpm lintfix
+      run: npm lintfix
 
     - name: Lint files
-      run: pnpm lint
+      run: npm lint
 
     - name: Build
-      run: pnpm build
+      run: npm build
