@@ -15,7 +15,7 @@ module.exports = {
         'plugin:vue/vue3-recommended',
         'plugin:prettier/recommended',
     ],
-    plugins: ['@typescript-eslint'],
+    plugins: ['@typescript-eslint', 'vitest'],
     rules: {
         'vue/multi-word-component-names': 'off',
     },

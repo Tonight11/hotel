@@ -3,8 +3,8 @@ name: CI
 on: workflow_dispatch
 
 jobs:
-  print:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print to console
-        run: echo Hello GH Actions
+    print:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Print to console
+              run: echo Hello GH Actions
