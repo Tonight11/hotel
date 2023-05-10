@@ -1,26 +1,31 @@
-name: actions
+name: CI
+
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+
 jobs:
-    init:
-        runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node-version: [ 17.x ]
-        steps:
-            - uses: actions/checkout@v3
-            - name: Starting Node.js ${{matrix.node-version}}
-              uses: actions/setup-node@v3
-              with:
-                  node-version: ${{matrix.node-version}}
-            - name: install modules
-              run: pnpm install
-            - name: build project
-              run: pnpm build
-            - name: lint fix code
-              run: pnpm lintfix
-            - name: lint code
-              run: pnpm lint
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Use Node.js 17.x
+      uses: actions/setup-node@v3
+      with:
+        node-version: '17.x'
+
+    - name: Install dependencies
+      run: npm run install
+
+    - name: Lint and fix files
+      run: npm run lintfix
+
+    - name: Lint files
+      run: npm run lint
+
+    - name: Build
+      run: npm run build
