@@ -1,26 +1,36 @@
-name: actions
-on:
+name: LayingPipe
+
+on: 
   push:
-    branches: [ main ]
+    branches:
+      - main
+
   pull_request:
-    branches: [ main ]
+    branches:
+      -main
+
 jobs:
-    init:
-        runs-on: ubuntu-latest
-        strategy:
-            matrix:
-                node-version: [ 17.x ]
-        steps:
-            - uses: actions/checkout@v3
-            - name: Starting Node.js ${{matrix.node-version}}
-              uses: actions/setup-node@v3
-              with:
-                  node-version: ${{matrix.node-version}}
-            - name: install modules
-              run: pnpm install
-            - name: build project
-              run: pnpm build
-            - name: lint fix code
-              run: pnpm lintfix
-            - name: lint code
-              run: pnpm lint
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+    - uses: actions/setup-node@v2
+      with:
+          node-version: '14'
+    - name: pnpm install
+      run: |
+        pnpm install
+
+    - name: pnpm build
+      run: pnpm build
+
+    - name: pnpm lintfix
+      run: |
+        pnpm lintfix
+
+    - name: pnpm lint
+      run: |
+        pnpm lint
