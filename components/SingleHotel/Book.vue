@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import Datepicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
+let isModalOpen = ref(true)
+
 const email = ref('')
 
 const date = ref(new Date())
@@ -21,6 +23,12 @@ const disabledDates = computed(() => {
 </script>
 
 <template>
+    <teleport to="body">
+        <modals-modal
+            v-if="isModalOpen"
+            @close="isModalOpen = false"
+        ></modals-modal>
+    </teleport>
     <div class="single-hotel__book book-hotel">
         <titles-section-title>
             <template #lato>
