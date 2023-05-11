@@ -20,6 +20,12 @@ html {
     }
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
     background-color: $mainBackgroundColor;
     font-family: $mainFont;
@@ -35,6 +41,7 @@ body {
     }
 }
 button {
+    display: inline-block;
     border: none;
 }
 a {

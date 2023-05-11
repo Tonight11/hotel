@@ -27,8 +27,8 @@
                 <div class="big-text">{{ guestsSum }}</div>
             </q-card-section>
             <q-checkbox
-                dark
                 v-model="personalData"
+                dark
                 label="Я даю согласие на обработку моих персональных данных"
                 color="red"
                 class="checkbox"
@@ -48,6 +48,7 @@
 </template>
 
 <script setup lang="ts">
+// refactor to TS and move to composables
 let personalData = ref(true)
 const emits = defineEmits(['close'])
 const props = defineProps({

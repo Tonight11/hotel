@@ -6,36 +6,37 @@
     align-items: center;
     justify-content: center;
     position: fixed;
-    z-index: 1;
+    z-index: 100;
+    left: 0;
+    top: 0;
 }
 .card {
-    width: 41rem;
-    background-color: #09080D;
+    max-width: 41rem;
+    background-color: #09080d;
     position: relative;
+		padding: 1.2rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1.4rem;
 }
 .big-text {
-    font-size: 28px;
+    font-size: 1.8rem;
 }
 .small-text {
-    font-size: 16px;
+    font-size: 1.2rem;
 }
 .q-card__section--vert {
-    padding: 20px;
-}
-.checkbox {
-    padding-left: 8px;
+	padding: 0;
 }
 .modal__payment-result {
-    padding: 20px;
     display: flex;
     gap: 10px;
     align-items: center;
 }
 .q-btn {
     font-weight: bold;
-    font-size: 20px;
-    margin: 0px 0px 20px 20px;
-    width: 90%;
+    font-size: 1.8rem;
+    width: 100%;
     border-radius: 7px;
 }
 .q-checkbox {
