@@ -5,9 +5,9 @@
         <div class="single-hotel__first">
             <titles-page-title>
                 <template #lato>
-                    <p>title</p>
+                    <p>Dynamic title</p>
                 </template>
-                <template #cursive><p>title</p></template>
+                <template #cursive><p>Dynamic title</p></template>
             </titles-page-title>
             <nuxt-img class="single-hotel__img" src="/hello.jpeg" />
         </div>
