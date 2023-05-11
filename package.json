@@ -8,10 +8,9 @@
         "preview": "nuxt preview",
         "postinstall": "nuxt prepare",
         "test": "vitest",
-        "lint:js": "eslint --ext \".ts,.vue\" --ignore-path .gitignore .",
         "lint:prettier": "prettier --check .",
-        "lint": "pnpm lint:js && pnpm lint:prettier",
-        "lintfix": "prettier --write --list-different . && pnpm lint:js --fix"
+        "lint": "eslint --ext .ts,.js,.vue .",
+        "lintfix": "prettier --write --list-different . && pnpm lint --fix"
     },
     "devDependencies": {
         "@nuxt/image-edge": "1.0.0-28050764.aaee7ac",
