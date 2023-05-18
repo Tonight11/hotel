@@ -35,7 +35,8 @@ setTimeout(() => {
 .single-hotel__place {
     display: flex;
     flex-direction: column;
-    height: 70vh;
+    height: 100vh;
+    margin-bottom: 7rem;
 }
 .yandex-container {
     min-height: 500px;

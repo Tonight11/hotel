@@ -1,13 +1,27 @@
 <script setup lang="ts">
 import Datepicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
-let isModalOpen = ref(true)
+let isModalOpen = ref(false)
 
 const email = ref('')
+const guest = ref(0)
 
-const date = ref(new Date())
+const dateStart = ref(new Date())
+const dateEnd = ref()
+const dayStart = computed(() => dateStart.value.getDate())
+const monthStart = computed(() => dateStart.value.getMonth() + 1)
+const yearStart = computed(() => dateStart.value.getFullYear())
+const dayEnd = ref(null)
+const monthEnd = ref(null)
+const yearEnd = ref(null)
 const handleDate = (modelData: any): void => {
-    date.value = modelData
+    dateStart.value = modelData[0]
+    if (modelData[1]) {
+        dateEnd.value = modelData[1]
+        dayEnd.value = dateEnd.value.getDate()
+        monthEnd.value = dateEnd.value.getMonth() + 1
+        yearEnd.value = dateEnd.value.getFullYear()
+    }
 }
 const disabledDates = computed(() => {
     const today = new Date()
@@ -67,24 +81,59 @@ const disabledDates = computed(() => {
                 />
             </div>
             <div class="book-hotel__left">
-                <Datepicker
-                    :value="date"
-                    :range="true"
-                    :min-date="date"
-                    dark
-                    preview-format="false"
-                    :enable-time-picker="false"
-                    :disabled-dates="disabledDates"
-                    no-disabled-range
-                    @update:modelValue="handleDate"
-                >
-                    <template #trigger>
-                        <div class="book-hotel__calendar">
-                            <IconCalendar />
-                        </div>
-                    </template>
-                </Datepicker>
-                {{ date }}
+                <div class="book-hotel__date">
+                    <div class="book-hotel__name">Date</div>
+
+                    <Datepicker
+                        :value="dateStart"
+                        :range="true"
+                        :min-date="dateStart"
+                        dark
+                        preview-format="false"
+                        :enable-time-picker="false"
+                        :disabled-dates="disabledDates"
+                        no-disabled-range
+                        @update:model-value="handleDate"
+                    >
+                        <template #trigger>
+                            <div class="book-hotel__calendar">
+                                <IconCalendar />
+                            </div>
+                        </template>
+                    </Datepicker>
+                    <div class="book-hotel__selected">
+                        <span v-if="dateStart">{{
+                            `${dayStart}.${monthStart}.${yearStart}`
+                        }}</span>
+
+                        <span v-if="dateEnd">
+                            - {{ `${dayEnd}.${monthEnd}.${yearEnd}` }}</span
+                        >
+                    </div>
+                </div>
+                <div class="book-hotel__guest">
+                    <div class="book-hotel__name">
+                        Number of guests <span>(max 4)</span>
+                    </div>
+                    <q-input
+                        v-model.number="guest"
+                        class="book-hotel__count"
+                        type="number"
+                        max="4"
+                        min="0"
+                        bg-color="transparent"
+                        color="yellow"
+                        label-color="white"
+                        :input-style="{ color: 'white' }"
+                    />
+                </div>
+                <q-btn
+                    style="background-color: #ca8647"
+                    text-color="white"
+                    label="БРОНИРОВАТЬ"
+                    class="book-hotel__btn"
+                    @click="isModalOpen = true"
+                />
             </div>
         </form>
     </div>
@@ -102,7 +151,6 @@ const disabledDates = computed(() => {
 }
 
 .book-hotel {
-    margin-top: 20rem;
     &__form {
         display: flex;
         gap: 10rem;
@@ -118,6 +166,9 @@ const disabledDates = computed(() => {
 
     &__left {
         flex: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     &__calendar {
@@ -130,8 +181,56 @@ const disabledDates = computed(() => {
         cursor: pointer;
         background: $secondary-color;
     }
+
+    &__date {
+        display: flex;
+        align-items: center;
+        gap: 3rem;
+    }
+
+    &__name {
+        font-size: 2.4rem;
+        text-transform: uppercase;
+
+        & span {
+            opacity: 65%;
+            font-size: 1.6rem;
+            text-transform: lowercase;
+        }
+    }
+
+    &__selected {
+        padding-bottom: 0.3rem;
+        border-bottom: 2px solid $secondary-color;
+    }
+
+    &__guest {
+        display: flex;
+        align-items: flex-end;
+        gap: 3rem;
+    }
+    &__count {
+        width: 10rem;
+    }
+
+    &__btn {
+        width: 100%;
+        padding: 1.6rem 0;
+        font-size: 1.8rem;
+    }
 }
 
+.q-field--standard .q-field__control::before {
+    border-color: $secondary-color;
+}
+
+.q-field--standard:hover .q-field__control::before {
+    border-color: $secondary-color;
+}
+
+.dp__main {
+    width: auto;
+}
 .dp__menu {
     padding: 1rem 2rem;
 }
