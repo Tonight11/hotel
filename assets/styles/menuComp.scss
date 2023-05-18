@@ -1,0 +1,94 @@
+.burger-wrapper__menu {
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    height: fit-content;
+    width: 35px;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    z-index: 4;
+    position: absolute;
+    .burger-wrapper__menu-dot {
+        border-radius: 100%;
+        height: 8px;
+        width: 8px;
+        background-color: #fff;
+        transition: 0.4s;
+    }
+}
+.burger-wrapper__navigation {
+    width: 0px;
+    z-index: 3;
+    height: 0;
+    background-color: #27272e;
+    transition: 0.5s;
+    border-bottom-left-radius: 100%;
+    right: 0;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    padding: 0 10%;
+    flex-direction: column;
+    justify-content: center;
+    visibility: hidden;
+
+    .burger-wrapper__navigation-displayer {
+        height: fit-content;
+        width: fit-content;
+    }
+
+    .burger-wrapper__navigation-menu {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        align-items: center;
+    }
+    .burger-wrapper__navigation-links {
+        flex-direction: column;
+        display: flex;
+        .linkFont {
+            font-size: 4rem;
+        }
+    }
+    .displayFont {
+        font-size: 30rem;
+    }
+    .burger-wrapper__navigation-footer {
+        display: flex;
+        height: fit-content;
+        gap: 2rem;
+        position: absolute;
+        right: 5%;
+        bottom: 5%;
+        .burger-wrapper__navigation-footer-item {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+    }
+}
+.activeNavigation {
+    visibility: visible;
+    height: 100vh;
+    width: 100vw;
+    border-bottom-left-radius: 0%;
+    border-radius: 0px;
+    background-color: #27272e;
+    transition: width 0.7s, height 0.7s, border-bottom-left-radius 0.7s 0.3s;
+}
+.activeDotClose {
+    transform: translateY(11px);
+}
+.activeDotLong {
+    transform: translateY(22px);
+}
+.textActive {
+    transition: 0.2s 0.4s;
+    opacity: 1;
+}
+.textInactive {
+    transition: 0.1s;
+    opacity: 0;
+}
