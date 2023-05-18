@@ -27,14 +27,7 @@ onBeforeUnmount(() => {
                             BAYaDAN
                         </QToolbarTitle>
                         <div class="slot__header-media">
-                            <img
-                                src="@/assets/imgs/social_media/instagram.svg"
-                                alt=""
-                            />
-                            <img
-                                src="@/assets/imgs/social_media/telegram.svg"
-                                alt=""
-                            />
+                            <Menu />
                         </div>
                     </QToolbar>
                 </div>
