@@ -4,6 +4,8 @@ import '@vuepic/vue-datepicker/dist/main.css'
 let isModalOpen = ref(false)
 
 const email = ref('')
+const name = ref('')
+const number = ref('')
 const guest = ref(0)
 
 const dateStart = ref(new Date())
@@ -34,14 +36,26 @@ const disabledDates = computed(() => {
 
     return [tomorrow, afterTomorrow]
 })
+const onSubmit = () => {
+    isModalOpen.value = true
+}
 </script>
 
 <template>
     <teleport to="body">
-        <modals-modal
+        <lazy-modals-modal
             v-if="isModalOpen"
+            :name="name"
+            :mail="email"
+            :number="number"
+            :date="`${dayStart}.${monthStart}.${yearStart}${dayEnd ? '-' : ''}${
+                dayEnd || ''
+            }${dayEnd ? '.' : ''}${monthEnd || ''}${dayEnd ? '.' : ''}${
+                yearEnd || ''
+            }`"
+            :guests-sum="guest"
             @close="isModalOpen = false"
-        ></modals-modal>
+        ></lazy-modals-modal>
     </teleport>
     <div class="single-hotel__book book-hotel">
         <titles-section-title>
@@ -50,7 +64,7 @@ const disabledDates = computed(() => {
             </template>
             <template #cursive><p>book</p></template>
         </titles-section-title>
-        <form action="#" class="book-hotel__form" @submit.prevent="">
+        <q-form action="#" class="book-hotel__form" @submit="onSubmit">
             <div class="book-hotel__right">
                 <q-input
                     v-model="email"
@@ -60,24 +74,39 @@ const disabledDates = computed(() => {
                     color="yellow"
                     label-color="white"
                     :input-style="{ color: 'white' }"
+                    lazy-rules
+                    :rules="[
+                        (val) => (val && val.length > 0) || 'Please type email',
+                    ]"
                 />
                 <q-input
-                    v-model="email"
+                    v-model="name"
                     outlined
                     label="Name"
                     bg-color="transparent"
                     color="yellow"
                     label-color="white"
                     :input-style="{ color: 'white' }"
+                    lazy-rules
+                    :rules="[
+                        (val) =>
+                            (val && val.length > 0) || 'Please type something',
+                    ]"
                 />
                 <q-input
-                    v-model="email"
+                    v-model="number"
                     outlined
                     label="Number"
                     bg-color="transparent"
                     color="yellow"
                     label-color="white"
                     :input-style="{ color: 'white' }"
+                    lazy-rules
+                    :rules="[
+                        (val) =>
+                            (val && val.length >= 11) ||
+                            'Please type correct number',
+                    ]"
                 />
             </div>
             <div class="book-hotel__left">
@@ -125,17 +154,25 @@ const disabledDates = computed(() => {
                         color="yellow"
                         label-color="white"
                         :input-style="{ color: 'white' }"
+                        lazy-rules
+                        :rules="[
+                            (val) =>
+                                (val !== null && val !== '') || 'Please type',
+                            (val) =>
+                                (val > 0 && val < 5) ||
+                                'Please type biiger than 0 and less than 5',
+                        ]"
                     />
                 </div>
                 <q-btn
+                    type="submit"
                     style="background-color: #ca8647"
                     text-color="white"
                     label="БРОНИРОВАТЬ"
                     class="book-hotel__btn"
-                    @click="isModalOpen = true"
                 />
             </div>
-        </form>
+        </q-form>
     </div>
 </template>
 
