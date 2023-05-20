@@ -43,7 +43,7 @@ const onSubmit = () => {
 
 <template>
     <teleport to="body">
-        <lazy-modals-modal
+        <LazyUIModal
             v-if="isModalOpen"
             :name="name"
             :mail="email"
@@ -55,15 +55,15 @@ const onSubmit = () => {
             }`"
             :guests-sum="guest"
             @close="isModalOpen = false"
-        ></lazy-modals-modal>
+        ></LazyUIModal>
     </teleport>
     <div class="single-hotel__book book-hotel">
-        <titles-section-title>
+        <UISectionTitle>
             <template #lato>
                 <p>Бронировать</p>
             </template>
             <template #cursive><p>book</p></template>
-        </titles-section-title>
+        </UISectionTitle>
         <q-form action="#" class="book-hotel__form" @submit="onSubmit">
             <div class="book-hotel__right">
                 <q-input

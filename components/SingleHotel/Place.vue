@@ -9,12 +9,12 @@ setTimeout(() => {
 
 <template>
     <div class="single-hotel__place">
-        <titles-section-title>
+        <UISectionTitle>
             <template #lato>
                 <p>Расположение</p>
             </template>
             <template #cursive><p>location</p></template>
-        </titles-section-title>
+        </UISectionTitle>
         <ClientOnly>
             <YandexMap
                 v-if="visible"

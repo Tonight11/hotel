@@ -36,7 +36,7 @@
                     </NuxtLink>
                 </div>
                 <div class="burger-wrapper__navigation-displayer">
-                    <titles-page-title>
+                    <UIPageTitle>
                         <template #cursive>
                             <p
                                 class="displayFont"
@@ -47,7 +47,7 @@
                                 {{ textToDisplay }}
                             </p>
                         </template>
-                    </titles-page-title>
+                    </UIPageTitle>
                 </div>
             </div>
             <div class="burger-wrapper__navigation-footer">

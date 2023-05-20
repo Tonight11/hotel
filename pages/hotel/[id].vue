@@ -3,12 +3,12 @@
 <template>
     <div class="single-hotel">
         <div class="single-hotel__first">
-            <titles-page-title>
+            <UIPageTitle>
                 <template #lato>
                     <p>Dynamic title</p>
                 </template>
                 <template #cursive><p>Dynamic title</p></template>
-            </titles-page-title>
+            </UIPageTitle>
             <nuxt-img class="single-hotel__img" src="/hello.jpeg" />
         </div>
         <div class="container">

@@ -27,7 +27,7 @@ onBeforeUnmount(() => {
                             BAYaDAN
                         </QToolbarTitle>
                         <div class="slot__header-media">
-                            <Menu />
+                            <UIMenu />
                         </div>
                     </QToolbar>
                 </div>
