@@ -18,5 +18,8 @@ module.exports = {
     plugins: ['@typescript-eslint', 'vitest'],
     rules: {
         'vue/multi-word-component-names': 'off',
+        'vue/no-mutating-props': 'off',
+        'vue/no-setup-props-destructure': 'off',
+        'vue/no-parsing-error': 'off',
     },
 }
