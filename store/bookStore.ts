@@ -1,29 +1,28 @@
-// move to pinia => bookStore.ts
+import { defineStore } from 'pinia'
 
-export const useBook = <T extends Date | null>() => {
+export const useBookStore = defineStore('bookStore', () => {
     const email = ref('')
     const name = ref('')
     const number = ref('')
     const guest = ref(0)
 
     const dateStart = ref(new Date())
-    const dateEnd = ref<T>(null as T)
+    const dateEnd = ref<Date>()
     const dayStart = computed(() => dateStart.value.getDate())
     const monthStart = computed(() => dateStart.value.getMonth() + 1)
     const yearStart = computed(() => dateStart.value.getFullYear())
-    const dayEnd = ref<number | null>(null)
-    const monthEnd = ref<number | null>(null)
-    const yearEnd = ref<number | null>(null)
+    const dayEnd = ref<number>()
+    const monthEnd = ref<number>()
+    const yearEnd = ref<number>()
 
     const updateEndDateValues = (date: Date) => {
-        const dateEndRef = toRef(dateEnd, 'value')
-        dateEndRef.value = date
-        dayEnd.value = dateEndRef.value.getDate()
-        monthEnd.value = dateEndRef.value.getMonth() + 1
-        yearEnd.value = dateEndRef.value.getFullYear()
+        dateEnd.value = date
+        dayEnd.value = dateEnd.value.getDate()
+        monthEnd.value = dateEnd.value.getMonth() + 1
+        yearEnd.value = dateEnd.value.getFullYear()
     }
 
-    const handleDate = (modelData: [Date, T?]): void => {
+    const handleDate = (modelData: [Date, Date?]): void => {
         dateStart.value = modelData[0]
         if (modelData[1]) {
             updateEndDateValues(modelData[1])
@@ -40,6 +39,7 @@ export const useBook = <T extends Date | null>() => {
 
         return [tomorrow, afterTomorrow]
     })
+
     return {
         email,
         name,
@@ -56,4 +56,4 @@ export const useBook = <T extends Date | null>() => {
         disabledDates,
         handleDate,
     }
-}
+})

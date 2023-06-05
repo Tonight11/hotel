@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import '@vuepic/vue-datepicker/dist/main.css'
-let isModalOpen = ref(false)
+import { useBookStore } from '~/store/bookStore'
+import { storeToRefs } from 'pinia'
 
+const isModalOpen = ref(false)
+const { handleDate } = useBookStore()
 const {
     email,
     name,
@@ -15,9 +18,8 @@ const {
     yearEnd,
     dateStart,
     dateEnd,
-    handleDate,
     disabledDates,
-} = useBook()
+} = storeToRefs(useBookStore())
 
 const onSubmit = () => {
     isModalOpen.value = true
@@ -54,6 +56,7 @@ const onSubmit = () => {
                 v-model:number="number"
             />
             <SingleHotelBookRight
+                v-model:guest="guest"
                 :date-start="dateStart"
                 :date-end="dateEnd"
                 :day-start="dayStart"
@@ -63,8 +66,7 @@ const onSubmit = () => {
                 :month-end="monthEnd"
                 :year-end="yearEnd"
                 :disabled-dates="disabledDates"
-                v-model:guest="guest"
-                @selectDate="handleDate"
+                @select-date="handleDate"
             />
         </q-form>
     </div>

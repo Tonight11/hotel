@@ -110,7 +110,7 @@ let menuToggle = () => {
     }
 }
 
-let mouseOverHandler = (toDisplay: any) => {
+let mouseOverHandler = (toDisplay: string) => {
     textToDisplay.value = toDisplay
 }
 
