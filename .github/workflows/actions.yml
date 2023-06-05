@@ -21,7 +21,7 @@ jobs:
               with:
                   node-version: ${{ matrix.node-version }}
             - name: Install deps
-              run: npm install
+              run: npm install --force
             - name: Test app
               run: npm run test
             - name: Lint code
