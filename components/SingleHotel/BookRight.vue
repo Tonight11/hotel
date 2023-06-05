@@ -17,8 +17,7 @@ const {
     disabledDates,
 } = defineProps<BookRight>()
 
-const selectedDate = (date) => {
-    console.log(date)
+const selectedDate = (date: [Date, Date?]) => {
     emit('selectDate', date)
 }
 </script>
