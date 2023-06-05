@@ -1,41 +1,24 @@
 <script setup lang="ts">
-import Datepicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
 let isModalOpen = ref(false)
 
-const email = ref('')
-const name = ref('')
-const number = ref('')
-const guest = ref(0)
+const {
+    email,
+    name,
+    number,
+    guest,
+    dayStart,
+    dayEnd,
+    monthStart,
+    monthEnd,
+    yearStart,
+    yearEnd,
+    dateStart,
+    dateEnd,
+    handleDate,
+    disabledDates,
+} = useBook()
 
-const dateStart = ref(new Date())
-const dateEnd = ref()
-const dayStart = computed(() => dateStart.value.getDate())
-const monthStart = computed(() => dateStart.value.getMonth() + 1)
-const yearStart = computed(() => dateStart.value.getFullYear())
-const dayEnd = ref(null)
-const monthEnd = ref(null)
-const yearEnd = ref(null)
-const handleDate = (modelData: any): void => {
-    dateStart.value = modelData[0]
-    if (modelData[1]) {
-        dateEnd.value = modelData[1]
-        dayEnd.value = dateEnd.value.getDate()
-        monthEnd.value = dateEnd.value.getMonth() + 1
-        yearEnd.value = dateEnd.value.getFullYear()
-    }
-}
-const disabledDates = computed(() => {
-    const today = new Date()
-
-    const tomorrow = new Date(today)
-    tomorrow.setDate(tomorrow.getDate() + 1)
-
-    const afterTomorrow = new Date(tomorrow)
-    afterTomorrow.setDate(tomorrow.getDate() + 1)
-
-    return [tomorrow, afterTomorrow]
-})
 const onSubmit = () => {
     isModalOpen.value = true
 }
@@ -65,113 +48,24 @@ const onSubmit = () => {
             <template #cursive><p>book</p></template>
         </UISectionTitle>
         <q-form action="#" class="book-hotel__form" @submit="onSubmit">
-            <div class="book-hotel__right">
-                <q-input
-                    v-model="email"
-                    outlined
-                    label="Email"
-                    bg-color="transparent"
-                    color="yellow"
-                    label-color="white"
-                    :input-style="{ color: 'white' }"
-                    lazy-rules
-                    :rules="[
-                        (val) => (val && val.length > 0) || 'Please type email',
-                    ]"
-                />
-                <q-input
-                    v-model="name"
-                    outlined
-                    label="Name"
-                    bg-color="transparent"
-                    color="yellow"
-                    label-color="white"
-                    :input-style="{ color: 'white' }"
-                    lazy-rules
-                    :rules="[
-                        (val) =>
-                            (val && val.length > 0) || 'Please type something',
-                    ]"
-                />
-                <q-input
-                    v-model="number"
-                    outlined
-                    label="Number"
-                    bg-color="transparent"
-                    color="yellow"
-                    label-color="white"
-                    :input-style="{ color: 'white' }"
-                    lazy-rules
-                    :rules="[
-                        (val) =>
-                            (val && val.length >= 11) ||
-                            'Please type correct number',
-                    ]"
-                />
-            </div>
-            <div class="book-hotel__left">
-                <div class="book-hotel__date">
-                    <div class="book-hotel__name">Date</div>
-
-                    <Datepicker
-                        :value="dateStart"
-                        :range="true"
-                        :min-date="dateStart"
-                        dark
-                        preview-format="false"
-                        :enable-time-picker="false"
-                        :disabled-dates="disabledDates"
-                        no-disabled-range
-                        @update:model-value="handleDate"
-                    >
-                        <template #trigger>
-                            <div class="book-hotel__calendar">
-                                <IconCalendar />
-                            </div>
-                        </template>
-                    </Datepicker>
-                    <div class="book-hotel__selected">
-                        <span v-if="dateStart">{{
-                            `${dayStart}.${monthStart}.${yearStart}`
-                        }}</span>
-
-                        <span v-if="dateEnd">
-                            - {{ `${dayEnd}.${monthEnd}.${yearEnd}` }}</span
-                        >
-                    </div>
-                </div>
-                <div class="book-hotel__guest">
-                    <div class="book-hotel__name">
-                        Number of guests <span>(max 4)</span>
-                    </div>
-                    <q-input
-                        v-model.number="guest"
-                        class="book-hotel__count"
-                        type="number"
-                        max="4"
-                        min="0"
-                        bg-color="transparent"
-                        color="yellow"
-                        label-color="white"
-                        :input-style="{ color: 'white' }"
-                        lazy-rules
-                        :rules="[
-                            (val) =>
-                                (val !== null && val !== '') || 'Please type',
-                            (val) =>
-                                (val > 0 && val < 5) ||
-                                'Please type biiger than 0 and less than 5',
-                        ]"
-                    />
-                </div>
-                <q-btn
-                    type="submit"
-                    style="background-color: #ca8647"
-                    text-color="white"
-                    label="БРОНИРОВАТЬ"
-                    class="book-hotel__btn"
-                />
-            </div>
+            <SingleHotelBookLeft
+                v-model:email="email"
+                v-model:name="name"
+                v-model:number="number"
+            />
+            <SingleHotelBookRight
+                :date-start="dateStart"
+                :date-end="dateEnd"
+                :day-start="dayStart"
+                :month-start="monthStart"
+                :year-start="yearStart"
+                :day-end="dayEnd"
+                :month-end="monthEnd"
+                :year-end="yearEnd"
+                :disabled-dates="disabledDates"
+                v-model:guest="guest"
+                @selectDate="handleDate"
+            />
         </q-form>
     </div>
 </template>
