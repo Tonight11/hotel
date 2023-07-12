@@ -24,39 +24,44 @@ const maxPrice = computed(() => maxPriceFromBackend)
             <template #cursive><p>objects</p></template>
         </UIPageTitle>
         <div class="container">
-            <div class="hotel__search">
-                <div class="hotel__text">Looking for something certain?</div>
-                <q-input
-                    v-model="search"
-                    outlined
-                    label="Email"
-                    bg-color="transparent"
-                    color="yellow"
-                    label-color="white"
-                    :input-style="{ color: 'white' }"
-                />
-            </div>
-            <div class="hotel__price">
-                <div class="hotel__text">Price</div>
-                <q-range
-                    v-model="price"
-                    :min="0"
-                    :max="1000"
-                    :left-label-value="price.min + 'руб'"
-                    :right-label-value="price.max + 'руб'"
-                    label-always
-                    switch-label-side
-                    color="orange"
-                />
-            </div>
+            <div class="hotel__top">
+                <div class="hotel__search">
+                    <div class="hotel__text">
+                        Looking for something certain?
+                    </div>
+                    <q-input
+                        v-model="search"
+                        outlined
+                        label="Email"
+                        bg-color="transparent"
+                        color="yellow"
+                        label-color="white"
+                        :input-style="{ color: 'white' }"
+                    />
+                </div>
+                <div class="hotel__price">
+                    <div class="hotel__text">Price</div>
+                    <q-range
+                        v-model="price"
+                        :min="0"
+                        :max="1000"
+                        :left-label-value="price.min + 'руб'"
+                        :right-label-value="price.max + 'руб'"
+                        label-always
+                        switch-label-side
+                        color="orange"
+                    />
+                </div>
 
-            <q-btn
-                type="submit"
-                style="background-color: #ca8647"
-                text-color="white"
-                label="GO"
-                class="book-hotel__btn"
-            />
+                <q-btn
+                    type="submit"
+                    style="background-color: #ca8647"
+                    text-color="white"
+                    label="GO"
+                    class="book-hotel__btn"
+                />
+            </div>
+            <HotelRow />
         </div>
     </div>
 </template>
